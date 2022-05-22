@@ -1,0 +1,1 @@
+export { getViews } from "./getViews";
