@@ -1,1 +1,2 @@
-export { Home } from "./home/Home";
+export { Home } from "./Home";
+export { Trending } from "./Trending";

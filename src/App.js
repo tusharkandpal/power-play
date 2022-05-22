@@ -4,7 +4,7 @@ import { RouterWrapper } from "./router/router";
 
 function App() {
   return (
-    <div className="App flex flex-col min-h-screen text-neutral-200">
+    <div className="App flex flex-col h-screen text-neutral-200">
       <Nav />
       <main className="flex grow">
         <Sidebar />
