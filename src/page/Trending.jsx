@@ -17,7 +17,7 @@ export const Trending = () => {
   }, [dispatch, status]);
 
   return (
-    <div className="grow h-[39.3rem] overflow-y-scroll p-3 bg-neutral-700">
+    <div className="grow h-[39.35rem] overflow-y-auto p-3 bg-neutral-700">
       {status === "fulfilled" && (
         <>
           <div className="flex items-start flex-wrap gap-4 p-2 pb-6">
