@@ -14,9 +14,9 @@ export const VideoCard = ({
   views,
 }) => {
   return (
-    <article className="w-80 hover:shadow-md hover:shadow-violet-700/50">
+    <article className="w-[25rem] md:w-[16.5rem] lg:w-[20rem] hover:shadow-md hover:shadow-violet-700/50">
       <Link to="/video/:videoId" className="relative">
-        <img src={thumbnail} className="rounded-t-md" alt={title} />
+        <img src={thumbnail} loading="lazy" className="rounded-t-md" alt={title} />
         <small className="absolute top-3 p-2 bg-violet-800">
           {getViews(views)}
         </small>

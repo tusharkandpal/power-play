@@ -5,7 +5,10 @@ import { loadVideos, loadCategories } from "../features/videoSlice";
 
 export const Trending = () => {
   const { videos, categories, status, error } = useSelector(
-    (store) => store.timeline
+    (store) => store.videoTimeline
+  );
+  const { sidebarToggle } = useSelector(
+    (store) => store.displayTimeline
   );
   const dispatch = useDispatch();
 
@@ -17,16 +20,16 @@ export const Trending = () => {
   }, [dispatch, status]);
 
   return (
-    <div className="grow h-[39.35rem] overflow-y-auto p-3 bg-neutral-700">
+    <div className={`${sidebarToggle ? "hidden" : "" } md:block grow h-[39.35rem] overflow-y-auto p-3 bg-neutral-700`}> 
       {status === "fulfilled" && (
         <>
-          <div className="flex items-start flex-wrap gap-4 p-2 pb-6">
+          <div className="flex items-start overflow-x-auto gap-4 p-2 pb-6 mb-2">
             <span className="rounded-md py-2 px-3 outline outline-violet-700 cursor-pointer">
               All
             </span>
             {categories.map((category) => (
               <span
-                className="rounded-md py-2 px-3 bg-neutral-600 cursor-pointer"
+                className="min-w-fit rounded-md py-2 px-3 bg-neutral-600 cursor-pointer"
                 key={category._id}
               >
                 {category.categoryName}

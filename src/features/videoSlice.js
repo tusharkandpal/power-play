@@ -8,11 +8,11 @@ const initialState = {
   categories: [],
 };
 
-export const loadVideos = createAsyncThunk("posts/loadCategories", async () => {
+export const loadVideos = createAsyncThunk("videos/loadVideos", async () => {
   return await getVideos();
 });
 
-export const loadCategories = createAsyncThunk("posts/loadVideos", async () => {
+export const loadCategories = createAsyncThunk("videos/loadCategories", async () => {
   return await getCategories();
 });
 
