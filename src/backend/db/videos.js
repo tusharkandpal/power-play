@@ -5,7 +5,7 @@
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
+    _id: "Z-I069YqB5c",
     title: "Remember ft. Jacob Banks",
     singers: ["Seinabo Sey"],
     releaseYear: 2018,
@@ -17,7 +17,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=Z-I069YqB5c"
   },
   {
-    _id: "F_Riqjdh2oM",
+    _id: "BmUe3-sfr7E",
     title: "Kasoor (Official Music Video)",
     singers: ["Prateek Kuhad"],
     releaseYear: 2020,
@@ -29,7 +29,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=BmUe3-sfr7E"
   },
   {
-    _id: "0lzAQNRW0JA",
+    _id: "loh6M3VR8jk",
     title: "Time After Time (Live at Abbey Road Studios)",
     singers: ["Sam Smith"],
     releaseYear: 2021,
@@ -41,7 +41,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=loh6M3VR8jk"
   },
   {
-    _id: "pzNHnzupGSs",
+    _id: "fSS_R91Nimw",
     title: "Iktara Full Video - Wake Up Sid",
     singers: ["Kavita Seth", "Amit Trivedi"],
     releaseYear: 2013,
@@ -53,7 +53,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=fSS_R91Nimw"
   },
   {
-    _id: "NuYC3J9jobw",
+    _id: "2c4dB52ehAE",
     title: "100 Bad Days (Official Video)",
     singers: ["AJR"],
     releaseYear: 2019,
@@ -65,7 +65,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=2c4dB52ehAE"
   },
   {
-    _id: "bXZGGNOa2AQ",
+    _id: "5Eqb_-j3FDA",
     title: "Coke Studio | Season 14 | Pasoori",
     singers: ["Ali Sethi", "Shae Gill"],
     releaseYear: 2022,
@@ -77,7 +77,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=5Eqb_-j3FDA"
   },
   {
-    _id: "TIQ5hrfermg",
+    _id: "WPwTPhFMm3k",
     title: "Aaoge Jab Tum | Jab We Met",
     singers: ["Ustad Rashid Khan"],
     releaseYear: 2011,
@@ -89,7 +89,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=WPwTPhFMm3k"
   },
   {
-    _id: "mrP2eK_xHcg",
+    _id: "R90P9kixvs0",
     title: "We Had Today - Piano Music",
     singers: ["Cindy Wu"],
     releaseYear: 2019,
@@ -101,7 +101,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=R90P9kixvs0"
   },
   {
-    _id: "S8ZUtWTuHT4",
+    _id: "JUx23wZMn5E",
     title: "Khad Tainu Main Dassa",
     singers: ["Neha Kakkar", "Rohanpreet Singh"],
     releaseYear: 2021,
@@ -113,7 +113,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=JUx23wZMn5E"
   },
   {
-    _id: "slYoTyn2GUs",
+    _id: "fYiVvgjuvnU",
     title: "Break Free (Official Video)",
     singers: ["When Chai Met Toast"],
     releaseYear: 2021,
@@ -125,7 +125,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=fYiVvgjuvnU"
   },
   {
-    _id: "ULEQb_l-N08",
+    _id: "IJjeVuIGwa8",
     title: "Phases (Official Video)",
     singers: ["PRETTYMUCH"],
     releaseYear: 2019,
@@ -137,7 +137,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=IJjeVuIGwa8"
   },
   {
-    _id: "7obSU9DX2dY",
+    _id: "eCuC43hiDcA",
     title: "Dil Na Jaaneya - Good Newwz",
     singers: ["Rochak Kohli", "Lauv", "Akasa"],
     releaseYear: 2019,
@@ -149,7 +149,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=eCuC43hiDcA"
   },
   {
-    _id: "83SUIk&4v6I",
+    _id: "OGDkg3QiJmk",
     title: "'Wildest Dreams' at The GRAMMY Museum",
     singers: ["Taylor Swift"],
     releaseYear: 2016,
@@ -161,7 +161,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=OGDkg3QiJmk"
   },
   {
-    _id: "5YSVUxk4v6I",
+    _id: "TUP7k0fNCpU",
     title: "I Love You (Solo Piano)",
     singers: ["Riopy"],
     releaseYear: 2017,
@@ -173,7 +173,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/watch?v=TUP7k0fNCpU"
   },
   {
-    _id: "vB2m1uRF30c",
+    _id: "KW7Mj97DkAE",
     title: "I Leave Again | Nomad Series",
     singers: ["Petit Biscuit", "Shallou"],
     releaseYear: 2020,
