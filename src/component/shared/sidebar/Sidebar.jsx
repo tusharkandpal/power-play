@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleSidebar } from "../../../features/displaySlice";
 import {
   AiFillHome,
   AiFillFire,
@@ -9,8 +11,15 @@ import { RiMovieFill } from "react-icons/ri";
 import { MdPlaylistPlay } from "react-icons/md";
 
 export const Sidebar = () => {
+  const { sidebarToggle } = useSelector((store) => store.displayTimeline);
+  const dispatch = useDispatch();
+
   return (
-    <aside className="hidden flex flex-col items-center basis-full md:basis-44 shrink-0 text-center bg-neutral-800">
+    <aside
+      className={`${
+        sidebarToggle ? "flex" : "hidden"
+      } md:flex flex-col items-center basis-full md:basis-44 shrink-0 text-center bg-neutral-800`}
+    >
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -20,6 +29,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <AiFillHome className="align-middle inline-block" /> Home
       </NavLink>
@@ -32,6 +42,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <AiFillFire className="align-middle inline-block" /> Trending
       </NavLink>
@@ -44,6 +55,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <AiFillLike className="align-middle inline-block" /> Liked
       </NavLink>
@@ -56,6 +68,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <RiMovieFill className="align-middle inline-block" /> Watch Later
       </NavLink>
@@ -68,6 +81,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <MdPlaylistPlay className="align-middle inline-block" /> Playlists
       </NavLink>
@@ -80,6 +94,7 @@ export const Sidebar = () => {
               : "hover:border-b-violet-700 border-neutral-800"
           }`
         }
+        onClick={() => dispatch(toggleSidebar())}
       >
         <AiOutlineHistory className="align-middle inline-block" /> History
       </NavLink>
