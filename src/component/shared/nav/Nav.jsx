@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { toggleSidebar } from "../../../features/displaySlice";
-import { logOut } from "../../../features/authSlice";
+import { toggleSidebar, logOut } from "../../../features/features";
 
 export const Nav = () => {
   const { isLoggedIn } = useSelector((store) => store.authTimeline);

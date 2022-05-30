@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import {
   Home,
   Trending,
+  Video,
   Auth,
   Likes,
   WatchLater,
@@ -15,6 +16,7 @@ export const RouterWrapper = () => {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/trending" element={<Trending />}></Route>
+      <Route path="/video/:videoId" element={<Video />}></Route>
       <Route path="/auth" element={<Auth />}></Route>
       <Route
         path="/likes"

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSidebar } from "../../../features/displaySlice";
+import { toggleSidebar } from "../../../features/features";
 import {
   AiFillHome,
   AiFillFire,
@@ -14,6 +14,11 @@ export const Sidebar = () => {
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
   const dispatch = useDispatch();
 
+  const isActiveNavLink = (isActive) =>
+    isActive
+      ? "border-violet-700"
+      : "hover:border-b-violet-700 border-neutral-800";
+
   return (
     <aside
       className={`${
@@ -23,11 +28,7 @@ export const Sidebar = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >
@@ -36,11 +37,8 @@ export const Sidebar = () => {
       <NavLink
         to="/trending"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md
+            ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >
@@ -49,11 +47,7 @@ export const Sidebar = () => {
       <NavLink
         to="/likes"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >
@@ -62,11 +56,7 @@ export const Sidebar = () => {
       <NavLink
         to="/watch-later"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >
@@ -75,11 +65,7 @@ export const Sidebar = () => {
       <NavLink
         to="/playlist"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >
@@ -88,11 +74,7 @@ export const Sidebar = () => {
       <NavLink
         to="/history"
         className={({ isActive }) =>
-          `w-30 p-2 m-2 border rounded-md ${
-            isActive
-              ? "border-violet-700"
-              : "hover:border-b-violet-700 border-neutral-800"
-          }`
+          `w-30 p-2 m-2 border rounded-md ${isActiveNavLink(isActive)}`
         }
         onClick={() => dispatch(toggleSidebar())}
       >

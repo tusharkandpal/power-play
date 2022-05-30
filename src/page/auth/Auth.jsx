@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { logIn, signUp } from "../../features/authSlice";
-import { toggleAuth } from "../../features/displaySlice";
+import { logIn, signUp, toggleAuth } from "../../features/features";
 
 export const Auth = () => {
   const { sidebarToggle, authToggle } = useSelector((store) => store.displayTimeline);
