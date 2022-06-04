@@ -4,8 +4,8 @@ import { getVideos, getCategories } from "../services/services";
 const initialState = {
   status: "idle",
   error: null,
-  videos: [],
-  categories: [],
+  videos: JSON.parse(localStorage.getItem("videos")) ?? [],
+  categories: JSON.parse(localStorage.getItem("categories")) ?? [],
 };
 
 export const loadVideos = createAsyncThunk("videos/loadVideos", async () => {
@@ -27,9 +27,11 @@ const videoSlice = createSlice({
     [loadVideos.fulfilled]: (state, action) => {
       state.videos = action.payload.videos;
       state.status = "fulfilled";
+      localStorage.setItem("videos", JSON.stringify(action.payload.videos));
     },
     [loadCategories.fulfilled]: (state, action) => {
       state.categories = action.payload.categories;
+      localStorage.setItem("categories", JSON.stringify(action.payload.categories));
     },
   },
 });

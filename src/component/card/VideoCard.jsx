@@ -4,6 +4,7 @@ import { MdLabel } from "react-icons/md";
 import { GiMicrophone } from "react-icons/gi";
 
 export const VideoCard = ({
+  _id,
   title,
   releaseYear,
   singers,
@@ -15,7 +16,7 @@ export const VideoCard = ({
 }) => {
   return (
     <article className="w-[25rem] md:w-[16.5rem] lg:w-[20rem] hover:shadow-md hover:shadow-violet-700/50">
-      <Link to="/video/:videoId" className="relative">
+      <Link to={`/video/${_id}`} className="relative">
         <img src={thumbnail} loading="lazy" className="rounded-t-md" alt={title} />
         <small className="absolute top-3 p-2 bg-violet-800">
           {getViews(views)}
