@@ -10,7 +10,7 @@ import {
 } from "../../features/features";
 
 export const Trending = () => {
-  const { categories, status, error } = useSelector(
+  const { categories, status } = useSelector(
     (store) => store.videoTimeline
   );
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
