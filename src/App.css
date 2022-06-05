@@ -1,4 +1,4 @@
-/* SCROLLBAR HIDE */
+/* || SCROLLBAR CSS */
 /* Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -7,4 +7,21 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* || TOAST CSS */
+.bottom-right {
+  bottom: 12px;
+  right: 12px;
+  transition: transform 0.6s ease-in-out;
+  animation: toast-animate 0.7s;
+}
+
+@keyframes toast-animate {
+  from {
+    transform: translateX(80%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

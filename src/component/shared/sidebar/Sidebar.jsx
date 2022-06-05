@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "../../../features/features";
 import {
@@ -13,17 +13,20 @@ import { MdPlaylistPlay } from "react-icons/md";
 export const Sidebar = () => {
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const isActiveNavLink = (isActive) =>
     isActive
       ? "border-violet-700"
       : "hover:border-b-violet-700 border-neutral-800";
 
+  const isNotVideoPage = pathname.includes("/video/") ? false : true
+
   return (
     <aside
       className={`${
         sidebarToggle ? "flex" : "hidden"
-      } md:flex flex-col items-center basis-full md:basis-44 shrink-0 text-center bg-neutral-800`}
+      } md:flex flex-col items-center basis-full md:max-w-fit text-center bg-neutral-800`}
     >
       <NavLink
         to="/"
@@ -32,7 +35,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <AiFillHome className="align-middle inline-block" /> Home
+        <AiFillHome className="inline-block" title="Home" />{isNotVideoPage && " Home"} 
       </NavLink>
       <NavLink
         to="/trending"
@@ -42,7 +45,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <AiFillFire className="align-middle inline-block" /> Trending
+        <AiFillFire className="inline-block" title="Trending" />{isNotVideoPage && " Trending"}
       </NavLink>
       <NavLink
         to="/likes"
@@ -51,7 +54,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <AiFillLike className="align-middle inline-block" /> Liked
+        <AiFillLike className="inline-block" title="Liked" />{isNotVideoPage && " Liked"}
       </NavLink>
       <NavLink
         to="/watch-later"
@@ -60,7 +63,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <RiMovieFill className="align-middle inline-block" /> Watch Later
+        <RiMovieFill className="inline-block" title="Watch Later" />{isNotVideoPage && " Watch Later"}
       </NavLink>
       <NavLink
         to="/playlist"
@@ -69,7 +72,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <MdPlaylistPlay className="align-middle inline-block" /> Playlists
+        <MdPlaylistPlay className="inline-block" title="Playlists" />{isNotVideoPage && " Playlists"}
       </NavLink>
       <NavLink
         to="/history"
@@ -78,7 +81,7 @@ export const Sidebar = () => {
         }
         onClick={() => dispatch(toggleSidebar())}
       >
-        <AiOutlineHistory className="align-middle inline-block" /> History
+        <AiOutlineHistory className="inline-block" title="History" />{isNotVideoPage && " History"}
       </NavLink>
     </aside>
   );

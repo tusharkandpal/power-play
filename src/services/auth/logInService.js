@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const logInService = async (email, password) => {
+export const logInService = async ({ email, password }, rejectWithValue) => {
   try {
     const { data } = await axios.post("/api/auth/login", {
       email,
@@ -8,6 +8,6 @@ export const logInService = async (email, password) => {
     });
     return data;
   } catch (error) {
-    return error;
+    return rejectWithValue(`Error Logging In. Please try again !`);
   }
 };

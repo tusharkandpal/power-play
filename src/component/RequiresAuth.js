@@ -1,9 +1,22 @@
+import { useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToast } from "../features/features";
 
 export const RequiresAuth = ({ children }) => {
-  const { isLoggedIn } = useSelector((store) => store.authTimeline);
+  const { isLoggedIn, status } = useSelector((store) => store.authTimeline);
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoggedIn && status === "idle")
+      dispatch(
+        addToast({
+          type: "INFO",
+          desc: `Please Log-In !`,
+        })
+      );
+  }, [isLoggedIn]);
 
   return (
     <>

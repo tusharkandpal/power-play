@@ -3,7 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { logIn, signUp, toggleAuth } from "../../features/features";
 
 export const Auth = () => {
-  const { sidebarToggle, authToggle } = useSelector((store) => store.displayTimeline);
+  const { sidebarToggle, authToggle } = useSelector(
+    (store) => store.displayTimeline
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
