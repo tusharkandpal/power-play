@@ -7,7 +7,7 @@ export const Home = () => {
   );
 
   return (
-    <main className={`flex ${sidebarToggle ? "hidden" : "" } sm:flex grow bg-[url('/public/banner.png')] bg-no-repeat bg-cover flex flex-col items-center justify-center`}>
+    <main className={`flex ${sidebarToggle && "hidden" } sm:flex grow bg-[url('/public/banner.png')] bg-no-repeat bg-cover flex flex-col items-center justify-center`}>
       <h1 className="text-2xl sm:text-4xl my-4 text-center">Unlimited entertaining music videos.</h1>
       <Link to="/trending">
         <button

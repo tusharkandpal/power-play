@@ -23,20 +23,21 @@ export const Video = () => {
   return (
     <div
       className={`${
-        sidebarToggle ? "hidden" : ""
-      } md:grid grid-cols-[1fr_0.2fr] h-[39.35rem] grow overflow-y-auto py-2 px-3 bg-neutral-700`}
+        sidebarToggle && "hidden"
+      } md:grid grid-cols-[1fr_0.1fr] grow overflow-y-auto py-2 px-3 bg-neutral-700`}
     >
       <div className="flex flex-col w-full md:w-[90%]">
         <h1 className="text-3xl">{title}</h1>
         <h4 className="text-md">by {singers.join(", ")}</h4>
         <iframe
           width="100%"
+          height="100%"
           src={`https://www.youtube.com/embed/${videoId}?autoplay=0&start=0`}
           title="Power Play Player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          className="my-2 h-[20rem] md:h-[30rem]"
+          className="my-2"
         ></iframe>
         <div className="flex justify-between px-2">
           <div>

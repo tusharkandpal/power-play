@@ -11,3 +11,8 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
+/* || ROOT */
+#root {
+  height: 100vh;
+}
