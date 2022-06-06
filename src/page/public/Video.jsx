@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { MustWatch } from "../../component/component";
-import { AiFillLike } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
 import { MdVideoLibrary } from "react-icons/md";
+import { postLikedVideos, deleteLikedVideos, addToast } from "../../features/features";
 
 export const Video = () => {
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
@@ -19,6 +20,10 @@ export const Video = () => {
     categoryName,
     views,
   } = video;
+  const { likes } = useSelector((store) => store.likeTimeline);
+  const dispatch = useDispatch();
+
+  const isLiked = likes.some((like) => like._id === videoId);
 
   return (
     <div
@@ -49,11 +54,35 @@ export const Video = () => {
             </p>
           </div>
           <div className="flex gap-5">
-            <AiFillLike
-              size={30}
-              className="cursor-pointer"
-              title="Like a video"
-            />
+            {isLiked ? (
+              <AiFillHeart
+                size={30}
+                className="cursor-pointer mb-2"
+                onClick={() => {
+                  dispatch(deleteLikedVideos(videoId));
+                  dispatch(
+                    addToast({
+                      type: "SUCCESS",
+                      desc: `Removed from liked videos.`,
+                    })
+                  );
+                }}
+              />
+            ) : (
+              <AiOutlineHeart
+                size={30}
+                className="cursor-pointer mb-2"
+                onClick={() => {
+                  dispatch(postLikedVideos(video));
+                  dispatch(
+                    addToast({
+                      type: "SUCCESS",
+                      desc: `Added to liked videos.`,
+                    })
+                  );
+                }}
+              />
+            )}
             <RiVideoAddFill
               size={30}
               className="cursor-pointer"

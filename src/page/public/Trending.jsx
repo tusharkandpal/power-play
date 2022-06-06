@@ -10,9 +10,7 @@ import {
 } from "../../features/features";
 
 export const Trending = () => {
-  const { categories, status } = useSelector(
-    (store) => store.videoTimeline
-  );
+  const { categories, status } = useSelector((store) => store.videoTimeline);
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
   const { categoryName } = useSelector((store) => store.filterTimeline);
   const videos = useFilteredVideos();
@@ -46,7 +44,7 @@ export const Trending = () => {
                   dispatch(
                     addToast({
                       type: "INFO",
-                      desc: `Showing videos with <strong>All</strong> categories`,
+                      desc: `Showing videos with <strong>All</strong> categories.`,
                     })
                   );
                 }}
@@ -65,7 +63,7 @@ export const Trending = () => {
                     dispatch(
                       addToast({
                         type: "INFO",
-                        desc: `Showing videos with <strong>${category.categoryName}</strong> categories`,
+                        desc: `Showing videos with <strong>${category.categoryName}</strong> categories.`,
                       })
                     );
                   }}

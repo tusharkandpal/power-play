@@ -3,7 +3,7 @@ import { logInService, signUpService } from "../services/services";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || [],
-  isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
+  isLoggedIn: localStorage.getItem("token") ? true : false,
   status: "idle",
   error: null,
 };
@@ -28,22 +28,22 @@ const authSlice = createSlice({
   reducers: {
     // Log-Out
     logOut: () => {
-      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("token");
       localStorage.removeItem("user");
       return { user: [], isLoggedIn: false, error: null, status: "idle" };
     },
   },
   extraReducers: {
     // Log-In
-    [logIn.pending]: (state) => {
-      state.status = "loading";
-    },
     [logIn.fulfilled]: (state, action) => {
       state.user = action.payload.foundUser;
       state.isLoggedIn = true;
       state.status = "fulfilled";
-      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("token", action.payload.encodedToken);
       localStorage.setItem("user", JSON.stringify(action.payload.foundUser));
+    },
+    [logIn.pending]: (state) => {
+      state.status = "loading";
     },
     [logIn.rejected]: (state, action) => {
       state.error = action.payload;
