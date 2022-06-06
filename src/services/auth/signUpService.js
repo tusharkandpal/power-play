@@ -11,7 +11,6 @@ export const signUpService = async (
       email,
       password,
     });
-    console.log(data)
     dispatch(
       addToast({
         type: "SUCCESS",
