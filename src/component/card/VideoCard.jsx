@@ -5,11 +5,7 @@ import { GiMicrophone } from "react-icons/gi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  postLikedVideos,
-  deleteLikedVideos,
-  addToast,
-} from "../../features/features";
+import { postLikedVideos, deleteLikedVideos } from "../../features/features";
 
 export const VideoCard = (video) => {
   const {
@@ -55,29 +51,13 @@ export const VideoCard = (video) => {
             <AiFillHeart
               size={25}
               className="cursor-pointer mb-2"
-              onClick={() => {
-                dispatch(deleteLikedVideos(_id));
-                dispatch(
-                  addToast({
-                    type: "SUCCESS",
-                    desc: `Removed from liked videos.`,
-                  })
-                );
-              }}
+              onClick={() => dispatch(deleteLikedVideos(_id))}
             />
           ) : (
             <AiOutlineHeart
               size={25}
               className="cursor-pointer mb-2"
-              onClick={() => {
-                dispatch(postLikedVideos(video));
-                dispatch(
-                  addToast({
-                    type: "SUCCESS",
-                    desc: `Added to liked videos.`,
-                  })
-                );
-              }}
+              onClick={() => dispatch(postLikedVideos(video))}
             />
           )}
           <RiVideoAddFill size={25} className="cursor-pointer mb-2" />

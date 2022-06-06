@@ -20,8 +20,8 @@ export const loadLikedVideos = createAsyncThunk(
 
 export const postLikedVideos = createAsyncThunk(
   "likes/postLikedVideos",
-  async (video, { rejectWithValue }) => {
-    return await addToLikedVideos(video, rejectWithValue);
+  async (video, { rejectWithValue, dispatch }) => {
+    return await addToLikedVideos(video, rejectWithValue, dispatch);
   }
 );
 
@@ -35,7 +35,11 @@ export const deleteLikedVideos = createAsyncThunk(
 const likeSlice = createSlice({
   name: "likes",
   initialState,
-  reducers: {},
+  reducers: {
+    resetLikes: () => {
+      return initialState;
+    },
+  },
   extraReducers: {
     // loadLikedVideos
     [loadLikedVideos.fulfilled]: (state, action) => {
@@ -77,5 +81,7 @@ const likeSlice = createSlice({
     },
   },
 });
+
+export const { resetLikes } = likeSlice.actions;
 
 export default likeSlice.reducer;

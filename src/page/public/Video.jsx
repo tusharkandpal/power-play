@@ -4,7 +4,7 @@ import { MustWatch } from "../../component/component";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
 import { MdVideoLibrary } from "react-icons/md";
-import { postLikedVideos, deleteLikedVideos, addToast } from "../../features/features";
+import { postLikedVideos, deleteLikedVideos } from "../../features/features";
 
 export const Video = () => {
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
@@ -58,29 +58,13 @@ export const Video = () => {
               <AiFillHeart
                 size={30}
                 className="cursor-pointer mb-2"
-                onClick={() => {
-                  dispatch(deleteLikedVideos(videoId));
-                  dispatch(
-                    addToast({
-                      type: "SUCCESS",
-                      desc: `Removed from liked videos.`,
-                    })
-                  );
-                }}
+                onClick={() => dispatch(deleteLikedVideos(videoId))}
               />
             ) : (
               <AiOutlineHeart
                 size={30}
                 className="cursor-pointer mb-2"
-                onClick={() => {
-                  dispatch(postLikedVideos(video));
-                  dispatch(
-                    addToast({
-                      type: "SUCCESS",
-                      desc: `Added to liked videos.`,
-                    })
-                  );
-                }}
+                onClick={() => dispatch(postLikedVideos(video))}
               />
             )}
             <RiVideoAddFill

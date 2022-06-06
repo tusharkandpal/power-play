@@ -10,15 +10,15 @@ const initialState = {
 
 export const logIn = createAsyncThunk(
   "auth/logIn",
-  async (credentials, { rejectWithValue }) => {
-    return await logInService(credentials, rejectWithValue);
+  async (credentials, { rejectWithValue, dispatch }) => {
+    return await logInService(credentials, rejectWithValue, dispatch);
   }
 );
 
 export const signUp = createAsyncThunk(
   "auth/signUp",
-  async (credentials, { rejectWithValue }) => {
-    return await signUpService(credentials, rejectWithValue);
+  async (credentials, { rejectWithValue, dispatch }) => {
+    return await signUpService(credentials, rejectWithValue, dispatch);
   }
 );
 
