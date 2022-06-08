@@ -1,15 +1,19 @@
 import axios from "axios";
 import { addToast } from "../../features/features";
 
-export const removeFromLikedVideos = async (videoId, rejectWithValue, dispatch) => {
+export const removeFromPlaylists = async (
+  playlistId,
+  rejectWithValue,
+  dispatch
+) => {
   try {
-    const { data } = await axios.delete(`/api/user/likes/${videoId}`, {
+    const { data } = await axios.delete(`/api/user/playlists/${playlistId}`, {
       headers: { authorization: localStorage.getItem("token") },
     });
     dispatch(
       addToast({
         type: "SUCCESS",
-        desc: "Removed from Liked Videos.",
+        desc: "Removed Playlist.",
       })
     );
     return data;
@@ -17,9 +21,9 @@ export const removeFromLikedVideos = async (videoId, rejectWithValue, dispatch) 
     dispatch(
       addToast({
         type: "WARNING",
-        desc: "Error removing from Liked Videos.",
+        desc: "Error removing Playlist.",
       })
     );
-    return rejectWithValue("Error removing from Liked Videos.");
+    return rejectWithValue("Error removing Playlist.");
   }
 };

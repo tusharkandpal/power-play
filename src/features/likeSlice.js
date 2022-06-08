@@ -13,8 +13,8 @@ const initialState = {
 
 export const loadLikedVideos = createAsyncThunk(
   "likes/loadLikedVideos",
-  async (_, { rejectWithValue }) => {
-    return await getLikedVideos(_, rejectWithValue);
+  async (_, { rejectWithValue, dispatch }) => {
+    return await getLikedVideos(_, rejectWithValue, dispatch);
   }
 );
 
@@ -27,8 +27,8 @@ export const postLikedVideos = createAsyncThunk(
 
 export const deleteLikedVideos = createAsyncThunk(
   "likes/deleteLikedVideos",
-  async (videoId, { rejectWithValue }) => {
-    return await removeFromLikedVideos(videoId, rejectWithValue);
+  async (videoId, { rejectWithValue, dispatch }) => {
+    return await removeFromLikedVideos(videoId, rejectWithValue, dispatch);
   }
 );
 

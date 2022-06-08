@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getToastProperties } from "../utils/getToastProperties"
+import { getToastProperties } from "../utils/getToastProperties";
 
 const initialState = {
   sidebarToggle: false,
   dropdownDisplay: "hidden",
+  showModal: false,
   authToggle: "LOGIN",
   toastList: [],
 };
@@ -24,7 +25,7 @@ const displaySlice = createSlice({
     addToast: (state, action) => {
       state.toastList = [
         ...state.toastList,
-        getToastProperties(action.payload)
+        getToastProperties(action.payload),
       ];
     },
     removeToast: (state, action) => {
@@ -32,10 +33,19 @@ const displaySlice = createSlice({
         (toast) => toast.id !== action.payload
       );
     },
+    setShowModal: (state, action) => {
+      state.showModal = action.payload;
+    },
   },
 });
 
-export const { toggleSidebar, toggleAuth, setDropdown, addToast, removeToast } =
-  displaySlice.actions;
+export const {
+  toggleSidebar,
+  toggleAuth,
+  setDropdown,
+  addToast,
+  removeToast,
+  setShowModal,
+} = displaySlice.actions;
 
 export default displaySlice.reducer;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,13 +8,23 @@ import {
   logOut,
   addToast,
   resetLikes,
+  resetPlaylists,
+  loadLikedVideos,
+  loadPlaylists,
 } from "../../../features/features";
 
 export const Nav = () => {
-  const { isLoggedIn } = useSelector((store) => store.authTimeline);
+  const { isLoggedIn, user } = useSelector((store) => store.authTimeline);
   const { searchTerm } = useSelector((store) => store.filterTimeline);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(loadLikedVideos(user.likes));
+      dispatch(loadPlaylists(user.playlists));
+    }
+  }, [isLoggedIn]);
 
   return (
     <nav className="flex justify-between items-center flex-wrap px-5 pb-3 bg-neutral-800">
@@ -48,6 +59,7 @@ export const Nav = () => {
                 })
               );
               dispatch(resetLikes());
+              dispatch(resetPlaylists());
             }}
           >
             Logout

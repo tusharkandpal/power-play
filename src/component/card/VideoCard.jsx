@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getViews } from "../../utils/utils";
 import { MdLabel } from "react-icons/md";
 import { GiMicrophone } from "react-icons/gi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
+import { CgPlayListRemove } from "react-icons/cg";
 import { useSelector, useDispatch } from "react-redux";
-import { postLikedVideos, deleteLikedVideos } from "../../features/features";
+import {
+  postLikedVideos,
+  deleteLikedVideos,
+  deleteVideoFromPlaylist,
+} from "../../features/features";
 
 export const VideoCard = (video) => {
   const {
@@ -18,8 +23,10 @@ export const VideoCard = (video) => {
     duration,
     language,
     views,
+    playlistId
   } = video;
   const { likes } = useSelector((store) => store.likeTimeline);
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const isLiked = likes.some((like) => like._id === _id);
@@ -27,7 +34,12 @@ export const VideoCard = (video) => {
   return (
     <article className="md:w-[18rem] lg:w-[20.5rem] hover:shadow-md hover:shadow-violet-700/50">
       <Link to={`/video/${_id}`} className="relative">
-        <img src={thumbnail} loading="lazy" className="rounded-t-md" alt={title} />
+        <img
+          src={thumbnail}
+          loading="lazy"
+          className="rounded-t-md"
+          alt={title}
+        />
         <small className="absolute top-3 p-2 bg-violet-800">
           {getViews(views)}
         </small>
@@ -51,16 +63,38 @@ export const VideoCard = (video) => {
             <AiFillHeart
               size={25}
               className="cursor-pointer mb-2"
+              title="Remove from Liked"
               onClick={() => dispatch(deleteLikedVideos(_id))}
             />
           ) : (
             <AiOutlineHeart
               size={25}
               className="cursor-pointer mb-2"
+              title="Add to Liked"
               onClick={() => dispatch(postLikedVideos(video))}
             />
           )}
-          <RiVideoAddFill size={25} className="cursor-pointer mb-2" />
+          {pathname === "/playlist" ? (
+            <CgPlayListRemove
+              size={25}
+              className="cursor-pointer mb-2"
+              title="Remove from Playlist"
+              onClick={() =>
+                dispatch(
+                  deleteVideoFromPlaylist({
+                    playlistId,
+                    videoId: _id,
+                  })
+                )
+              }
+            />
+          ) : (
+            <RiVideoAddFill
+              size={25}
+              className="cursor-pointer mb-2"
+              title="Add to Watch Later"
+            />
+          )}
         </div>
       </div>
     </article>

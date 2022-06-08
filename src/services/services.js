@@ -5,3 +5,8 @@ export { signUpService } from "./auth/signUpService";
 export { getLikedVideos } from "./likesServices/getLikedVideos";
 export { addToLikedVideos } from "./likesServices/addToLikedVideos";
 export { removeFromLikedVideos } from "./likesServices/removeFromLikedVideos";
+export { getPlaylists } from "./playlistServices/getPlaylists";
+export { removeFromPlaylists } from "./playlistServices/removeFromPlaylists";
+export { addToPlaylists } from "./playlistServices/addToPlaylists";
+export { addVideoToPlaylist } from "./playlistServices/addVideoToPlaylist";
+export { removeVideoFromPlaylist } from "./playlistServices/removeVideoFromPlaylist";
