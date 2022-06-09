@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FaHeartBroken } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { loadLikedVideos, addToast } from "../../features/features";
+import { loadLikedVideos } from "../../features/features";
 import { VideoCard } from "../../component/component";
 
 export const Likes = () => {

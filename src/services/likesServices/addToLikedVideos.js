@@ -12,15 +12,28 @@ export const addToLikedVideos = async (video, rejectWithValue, dispatch) => {
         headers: { authorization: localStorage.getItem("token") },
       }
     );
+    dispatch(
+      addToast({
+        type: "SUCCESS",
+        desc: "Added to Liked Videos.",
+      })
+    );
     return data;
   } catch (error) {
-    if (error.response.status === 500)
+    if (error.response.status === 500) {
       dispatch(
         addToast({
           type: "INFO",
-          desc: `Please Log-In !`,
+          desc: "Please Log-In !",
         })
       );
-    return rejectWithValue(`Error adding to Liked Videos.`);
+    } else
+      dispatch(
+        addToast({
+          type: "WARNING",
+          desc: "Error adding to Liked Videos.",
+        })
+      );
+    return rejectWithValue("Error adding to Liked Videos.");
   }
 };
