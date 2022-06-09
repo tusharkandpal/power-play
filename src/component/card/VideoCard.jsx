@@ -5,11 +5,14 @@ import { GiMicrophone } from "react-icons/gi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
 import { CgPlayListRemove } from "react-icons/cg";
+import { BiHide } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import {
   postLikedVideos,
   deleteLikedVideos,
   deleteVideoFromPlaylist,
+  postToWatchLater,
+  deleteFromWatchLater,
 } from "../../features/features";
 
 export const VideoCard = (video) => {
@@ -23,13 +26,17 @@ export const VideoCard = (video) => {
     duration,
     language,
     views,
-    playlistId
+    playlistId,
   } = video;
   const { likes } = useSelector((store) => store.likeTimeline);
+  const { watchLater } = useSelector((store) => store.watchLaterTimeline);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const isLiked = likes.some((like) => like._id === _id);
+  const isInWatchLater = watchLater.some(
+    (watchLaterVideo) => watchLaterVideo._id === _id
+  );
 
   return (
     <article className="md:w-[18rem] lg:w-[20.5rem] hover:shadow-md hover:shadow-violet-700/50">
@@ -88,11 +95,19 @@ export const VideoCard = (video) => {
                 )
               }
             />
+          ) : isInWatchLater ? (
+            <BiHide
+              size={25}
+              className="cursor-pointer mb-2"
+              title="Remove from Watch Later"
+              onClick={() => dispatch(deleteFromWatchLater(video._id))}
+            />
           ) : (
             <RiVideoAddFill
               size={25}
               className="cursor-pointer mb-2"
               title="Add to Watch Later"
+              onClick={() => dispatch(postToWatchLater(video))}
             />
           )}
         </div>

@@ -10,3 +10,6 @@ export { removeFromPlaylists } from "./playlistServices/removeFromPlaylists";
 export { addToPlaylists } from "./playlistServices/addToPlaylists";
 export { addVideoToPlaylist } from "./playlistServices/addVideoToPlaylist";
 export { removeVideoFromPlaylist } from "./playlistServices/removeVideoFromPlaylist";
+export { getWatchLater } from "./watchLaterServices/getWatchLater";
+export { addToWatchLater } from "./watchLaterServices/addToWatchLater";
+export { removeFromWatchLater } from "./watchLaterServices/removeFromWatchLater";

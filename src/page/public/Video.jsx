@@ -4,16 +4,20 @@ import { Modal, MustWatch } from "../../component/component";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
 import { MdVideoLibrary } from "react-icons/md";
+import { BiHide } from "react-icons/bi";
 import {
+  addToast,
+  setShowModal,
   postLikedVideos,
   deleteLikedVideos,
-  setShowModal,
-  addToast,
+  postToWatchLater,
+  deleteFromWatchLater,
 } from "../../features/features";
 
 export const Video = () => {
   const { sidebarToggle } = useSelector((store) => store.displayTimeline);
   const { videos } = useSelector((store) => store.videoTimeline);
+  const { watchLater } = useSelector((store) => store.watchLaterTimeline);
   const { videoId } = useParams();
   const video = videos?.find((video) => video._id === videoId);
   const {
@@ -30,6 +34,9 @@ export const Video = () => {
   const dispatch = useDispatch();
 
   const isLiked = likes.some((like) => like._id === videoId);
+  const isInWatchLater = watchLater.some(
+    (watchLaterVideo) => watchLaterVideo._id === videoId
+  );
 
   return (
     <>
@@ -76,11 +83,21 @@ export const Video = () => {
                   onClick={() => dispatch(postLikedVideos(video))}
                 />
               )}
-              <RiVideoAddFill
-                size={30}
-                className="cursor-pointer"
-                title="Add to Watch Later"
-              />
+              {isInWatchLater ? (
+                <BiHide
+                  size={25}
+                  className="cursor-pointer mb-2"
+                  title="Remove from Watch Later"
+                  onClick={() => dispatch(deleteFromWatchLater(videoId))}
+                />
+              ) : (
+                <RiVideoAddFill
+                  size={30}
+                  className="cursor-pointer"
+                  title="Add to Watch Later"
+                  onClick={() => dispatch(postToWatchLater(video))}
+                />
+              )}
               <MdVideoLibrary
                 size={30}
                 className="cursor-pointer"

@@ -21,23 +21,21 @@ export const Likes = () => {
         sidebarToggle && "hidden"
       } md:block grow p-3 overflow-y-auto bg-neutral-700`}
     >
-      {status === "loading" ? (
-        <span>Loading...Please wait</span>
-      ) : (
-        <>
-          <p className="text-3xl mb-4 pl-2">Liked Videos</p>
-          <div className="flex flex-wrap items-start justify-center md:justify-start gap-3">
-            {likes.length === 0 ? (
-              <p className="text-lg pl-2">
-                No liked videos 🥺
-                <FaHeartBroken className="inline-block" />
-              </p>
-            ) : (
-              likes.map((video) => <VideoCard key={video._id} {...video} />)
-            )}
-          </div>
-        </>
-      )}
+      <>
+        <p className="text-3xl mb-4 pl-2">Liked Videos</p>
+        <div className="flex flex-wrap items-start justify-center md:justify-start gap-3">
+          {status === "loading" ? (
+            <span>Loading...Please wait</span>
+          ) : likes.length === 0 ? (
+            <p className="text-lg pl-2">
+              No liked videos 🥺
+              <FaHeartBroken className="inline-block" />
+            </p>
+          ) : (
+            likes.map((video) => <VideoCard key={video._id} {...video} />)
+          )}
+        </div>
+      </>
     </div>
   );
 };
