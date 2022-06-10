@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { getViews } from "../../utils/utils";
-import { MdLabel } from "react-icons/md";
+import { MdLabel, MdAutoDelete } from "react-icons/md";
 import { GiMicrophone } from "react-icons/gi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RiVideoAddFill } from "react-icons/ri";
@@ -13,6 +13,8 @@ import {
   deleteVideoFromPlaylist,
   postToWatchLater,
   deleteFromWatchLater,
+  postToHistory,
+  deleteFromHistory,
 } from "../../features/features";
 
 export const VideoCard = (video) => {
@@ -28,19 +30,30 @@ export const VideoCard = (video) => {
     views,
     playlistId,
   } = video;
+  const { isLoggedIn } = useSelector((store) => store.authTimeline);
   const { likes } = useSelector((store) => store.likeTimeline);
   const { watchLater } = useSelector((store) => store.watchLaterTimeline);
+  const { history } = useSelector((store) => store.historyTimeline);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const isLiked = likes.some((like) => like._id === _id);
-  const isInWatchLater = watchLater.some(
+  const isVideoInWatchLater = watchLater.some(
     (watchLaterVideo) => watchLaterVideo._id === _id
+  );
+  const isVideoInHistory = history.some(
+    (historyVideo) => historyVideo._id === _id
   );
 
   return (
     <article className="md:w-[18rem] lg:w-[20.5rem] hover:shadow-md hover:shadow-violet-700/50">
-      <Link to={`/video/${_id}`} className="relative">
+      <Link
+        to={`/video/${_id}`}
+        className="relative"
+        onClick={() =>
+          isLoggedIn && !isVideoInHistory && dispatch(postToHistory(video))
+        }
+      >
         <img
           src={thumbnail}
           loading="lazy"
@@ -95,7 +108,14 @@ export const VideoCard = (video) => {
                 )
               }
             />
-          ) : isInWatchLater ? (
+          ) : pathname === "/history" ? (
+            <MdAutoDelete
+              size={25}
+              className="cursor-pointer mb-2"
+              title="Remove from Watch Later"
+              onClick={() => dispatch(deleteFromHistory(video._id))}
+            />
+          ) : isVideoInWatchLater ? (
             <BiHide
               size={25}
               className="cursor-pointer mb-2"

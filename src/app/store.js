@@ -7,6 +7,7 @@ import filterReducer from "../features/filterSlice";
 import likeReducer from "../features/likeSlice";
 import playlistReducer from "../features/playlistSlice";
 import watchLaterReducer from "../features/watchLaterSlice";
+import historyReducer from "../features/historySlice";
 
 const reducer = combineReducers({
   videoTimeline: videoReducer,
@@ -16,6 +17,7 @@ const reducer = combineReducers({
   filterTimeline: filterReducer,
   playlistTimeline: playlistReducer,
   watchLaterTimeline: watchLaterReducer,
+  historyTimeline: historyReducer,
 });
 
 export const store = configureStore({

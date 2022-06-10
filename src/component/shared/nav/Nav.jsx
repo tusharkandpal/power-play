@@ -9,26 +9,26 @@ import {
   addToast,
   resetLikes,
   resetPlaylists,
+  resetHistory,
   resetWatchLater,
   loadLikedVideos,
   loadPlaylists,
   loadWatchLater,
+  loadHistory,
 } from "../../../features/features";
 
 export const Nav = () => {
-  const {
-    isLoggedIn,
-    user: { likes, playlists, watchlater },
-  } = useSelector((store) => store.authTimeline);
+  const { isLoggedIn } = useSelector((store) => store.authTimeline);
   const { searchTerm } = useSelector((store) => store.filterTimeline);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(loadLikedVideos(likes));
-      dispatch(loadPlaylists(playlists));
-      dispatch(loadWatchLater(watchlater));
+      dispatch(loadLikedVideos());
+      dispatch(loadPlaylists());
+      dispatch(loadWatchLater());
+      dispatch(loadHistory());
     }
   }, [isLoggedIn]);
 
@@ -67,6 +67,7 @@ export const Nav = () => {
               dispatch(resetLikes());
               dispatch(resetPlaylists());
               dispatch(resetWatchLater());
+              dispatch(resetHistory());
             }}
           >
             Logout
