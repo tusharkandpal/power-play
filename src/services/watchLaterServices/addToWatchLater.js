@@ -1,10 +1,10 @@
 import axios from "axios";
 import { addToast } from "../../features/features";
 
-export const addToLikedVideos = async (video, rejectWithValue, dispatch) => {
+export const addToWatchLater = async (video, rejectWithValue, dispatch) => {
   try {
     const { data } = await axios.post(
-      "/api/user/likes",
+      "/api/user/watchlater",
       {
         video,
       },
@@ -15,7 +15,7 @@ export const addToLikedVideos = async (video, rejectWithValue, dispatch) => {
     dispatch(
       addToast({
         type: "SUCCESS",
-        desc: `Added <strong>${video.title}</strong> to Liked Videos.`,
+        desc: `Added <strong>${video.title}</strong> to Watch Later.`,
       })
     );
     return data;
@@ -31,9 +31,9 @@ export const addToLikedVideos = async (video, rejectWithValue, dispatch) => {
       dispatch(
         addToast({
           type: "WARNING",
-          desc: "Error adding to Liked Videos.",
+          desc: "Error adding to Watch Later.",
         })
       );
-    return rejectWithValue("Error adding to Liked Videos.");
+    return rejectWithValue("Error adding to Watch Later.");
   }
 };

@@ -4,3 +4,4 @@ export * from "./videoSlice";
 export * from "./filterSlice";
 export * from "./likeSlice";
 export * from "./playlistSlice";
+export * from "./watchLaterSlice";
