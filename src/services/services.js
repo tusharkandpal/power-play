@@ -13,3 +13,7 @@ export { removeVideoFromPlaylist } from "./playlistServices/removeVideoFromPlayl
 export { getWatchLater } from "./watchLaterServices/getWatchLater";
 export { addToWatchLater } from "./watchLaterServices/addToWatchLater";
 export { removeFromWatchLater } from "./watchLaterServices/removeFromWatchLater";
+export { getHistory } from "./historyServices/getHistory";
+export { addToHistory } from "./historyServices/addToHistory";
+export { removeFromHistory } from "./historyServices/removeFromHistory";
+export { removeAllHistory } from "./historyServices/removeAllHistory";
