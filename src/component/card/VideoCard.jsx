@@ -112,7 +112,7 @@ export const VideoCard = (video) => {
             <MdAutoDelete
               size={25}
               className="cursor-pointer mb-2"
-              title="Remove from Watch Later"
+              title="Remove from History"
               onClick={() => dispatch(deleteFromHistory(video._id))}
             />
           ) : isVideoInWatchLater ? (
