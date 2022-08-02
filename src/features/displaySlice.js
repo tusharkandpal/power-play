@@ -7,6 +7,7 @@ const initialState = {
   showModal: false,
   authToggle: "LOGIN",
   toastList: [],
+  passwordType: "text"
 };
 
 const displaySlice = createSlice({
@@ -36,6 +37,9 @@ const displaySlice = createSlice({
     setShowModal: (state, action) => {
       state.showModal = action.payload;
     },
+    setPasswordType: (state, action) => {
+      state.passwordType = action.payload;
+    },
   },
 });
 
@@ -46,6 +50,7 @@ export const {
   addToast,
   removeToast,
   setShowModal,
+  setPasswordType
 } = displaySlice.actions;
 
 export default displaySlice.reducer;
