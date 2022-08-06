@@ -12,6 +12,34 @@ export function Modal(video) {
   const { playlists } = useSelector((store) => store.playlistTimeline);
   const dispatch = useDispatch();
 
+  const createPlaylist = (e) => {
+    const playlistName = e.target.value.trim();
+    if (e.key === "Enter") {
+      if (playlistName === "")
+        dispatch(
+          addToast({
+            type: "INFO",
+            desc: "Please enter a playlist name !",
+          })
+        );
+      else if (
+        playlists.some(
+          (playlist) =>
+            playlist.title.toLowerCase() === playlistName.toLowerCase()
+        )
+      )
+        dispatch(
+          addToast({
+            type: "INFO",
+            desc: "Playlist already exists !",
+          })
+        );
+      else dispatch(postToPlaylists({ title: playlistName }));
+
+      e.target.value = "";
+    }
+  };
+
   return (
     <>
       {showModal && (
@@ -27,27 +55,11 @@ export function Modal(video) {
             <input
               type="text"
               className="my-2 bg-neutral-700 outline-0 rounded-md p-1 border-2 border-neutral-800 focus:border-violet-600"
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  if (
-                    playlists.some(
-                      (playlist) =>
-                        playlist.title.toLowerCase() ===
-                        e.target.value.toLowerCase()
-                    )
-                  ) {
-                    dispatch(
-                      addToast({
-                        type: "INFO",
-                        desc: "Already exists !",
-                      })
-                    );
-                  } else dispatch(postToPlaylists({ title: e.target.value }));
-
-                  e.target.value = "";
-                }
-              }}
+              onKeyPress={createPlaylist}
             />
+            <small className="ml-1 text-neutral-600">
+              (Press ENTER to add)
+            </small>
             {playlists.length !== 0 && (
               <div className="my-3">
                 <p className="text-xl">Select any playlist(s): </p>

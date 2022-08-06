@@ -58,6 +58,8 @@ const authSlice = createSlice({
       state.user = action.payload.createdUser;
       state.isLoggedIn = true;
       state.status = "fulfilled";
+      localStorage.setItem("token", action.payload.encodedToken);
+      localStorage.setItem("user", JSON.stringify(action.payload.createdUser));
     },
     [signUp.rejected]: (state, action) => {
       state.error = action.payload;
