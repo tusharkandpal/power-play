@@ -7,7 +7,7 @@ const initialState = {
   showModal: false,
   authToggle: "LOGIN",
   toastList: [],
-  passwordType: "text"
+  passwordType: "password"
 };
 
 const displaySlice = createSlice({
