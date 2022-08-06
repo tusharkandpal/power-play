@@ -3,9 +3,11 @@ import {
   addToast,
   setShowModal,
   postToPlaylists,
+  deleteFromPlaylists,
   postVideoToPlaylist,
   deleteVideoFromPlaylist,
 } from "../../features/features";
+import { MdCancel } from "react-icons/md";
 
 export function Modal(video) {
   const { showModal } = useSelector((store) => store.displayTimeline);
@@ -65,10 +67,11 @@ export function Modal(video) {
                 <p className="text-xl">Select any playlist(s): </p>
                 <div className="flex flex-col">
                   {playlists.map((playlist) => (
-                    <div key={playlist._id}>
+                    <div key={playlist._id} className="my-1">
                       <input
                         type="checkbox"
-                        className="mr-2"
+                        title="Add to Playlist"
+                        className="mr-2 w-5 h-4"
                         checked={playlist.videos.some(
                           (playlistVideo) => playlistVideo._id === video._id
                         )}
@@ -98,6 +101,14 @@ export function Modal(video) {
                       >
                         {playlist.title}
                       </label>
+                      <MdCancel
+                        size={20}
+                        className="cursor-pointer float-right"
+                        title="Delete Playlist"
+                        onClick={() =>
+                          dispatch(deleteFromPlaylists(playlist._id))
+                        }
+                      />
                     </div>
                   ))}
                 </div>
