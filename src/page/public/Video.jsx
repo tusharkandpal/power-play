@@ -43,9 +43,9 @@ export const Video = () => {
       <div
         className={`${
           sidebarToggle && "hidden"
-        } md:grid grid-cols-[1fr_0.1fr] grow overflow-y-auto py-2 px-3 bg-neutral-700`}
+        } flex flex-col lg:flex-row grow overflow-y-auto py-2 px-3 bg-neutral-700`}
       >
-        <div className="flex flex-col w-full md:w-[90%]">
+        <div className="flex flex-col w-full md:w-[100%]">
           <h1 className="text-3xl">{title}</h1>
           <h4 className="text-md">by {singers.join(", ")}</h4>
           <iframe
